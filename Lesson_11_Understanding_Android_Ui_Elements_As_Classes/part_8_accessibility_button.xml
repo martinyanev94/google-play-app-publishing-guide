@@ -1,0 +1,6 @@
+<Button
+    android:id="@+id/accessibilityButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Accessibility Button"
+    android:contentDescription="This button opens the next activity."/>

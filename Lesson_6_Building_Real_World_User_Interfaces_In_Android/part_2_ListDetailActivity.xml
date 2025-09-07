@@ -1,0 +1,25 @@
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/inner_list_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        
+        <!-- Add individual item views here -->
+    </LinearLayout>
+</ScrollView>
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.list_detail_layout);
+
+    LinearLayout innerListLayout = findViewById(R.id.inner_list_layout);
+    for (int i = 0; i < 20; i++) {
+        TextView textView = new TextView(this);
+        textView.setText("Item " + (i + 1));
+        innerListLayout.addView(textView);
+    }
+}

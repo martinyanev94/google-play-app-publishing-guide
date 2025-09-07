@@ -1,0 +1,7 @@
+<translate 
+    android:fromXDelta="-100%" 
+    android:toXDelta="0%" 
+    android:duration="500" />
+Animation moveIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move_in);
+Button button = (Button) findViewById(R.id.button);
+button.startAnimation(moveIn);

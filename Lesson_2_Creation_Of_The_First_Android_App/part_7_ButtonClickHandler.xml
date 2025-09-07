@@ -1,0 +1,13 @@
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Click Me!" />
+private Button clickButton;
+clickButton = findViewById(R.id.button); // Ensure that your button has an id in XML
+clickButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        TextView textView = findViewById(R.id.textView); // Ensure this ID matches the one in XML
+        textView.setText("Button Clicked!");
+    }
+});

@@ -1,0 +1,42 @@
+implementation 'com.google.android.material:material:1.4.0'
+<com.google.android.material.tabs.TabLayout
+    android:id="@+id/tabLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+<androidx.viewpager.widget.ViewPager
+    android:id="@+id/viewPager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+TabLayout tabLayout = findViewById(R.id.tabLayout);
+tabLayout.setupWithViewPager(viewPager);
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/tab_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tab_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black" />
+</LinearLayout>
+private void setupTabIcons() {
+    for (int i = 0; i < imageUrls.size(); i++) {
+        View tab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        ImageView tabIcon = tab.findViewById(R.id.tab_icon);
+        TextView tabTitle = tab.findViewById(R.id.tab_title);
+
+        // Set your own drawable according to position or just use the same
+        tabIcon.setImageResource(R.drawable.ic_photo); 
+        tabTitle.setText("Image " + (i + 1));
+
+        tabLayout.getTabAt(i).setCustomView(tab);
+    }
+}

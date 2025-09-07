@@ -1,0 +1,26 @@
+<ListView
+    android:id="@+id/notes_list_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+public class MainActivity extends AppCompatActivity {
+    private ArrayList<String> notes;
+    private NotesAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        ListView listView = findViewById(R.id.notes_list_view);
+        notes = new ArrayList<>();
+        adapter = new NotesAdapter(this, notes);
+
+        listView.setAdapter(adapter);
+    }
+
+    // Method to add a new note
+    private void addNewNote(String note) {
+        notes.add(note);
+        adapter.notifyDataSetChanged();
+    }
+}

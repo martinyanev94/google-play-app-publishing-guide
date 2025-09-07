@@ -1,0 +1,4 @@
+<activity android:name=".EditNoteActivity"></activity>
+Intent editIntent = new Intent(MainActivity.this, EditNoteActivity.class);
+editIntent.putExtra("note_key", note); // Pass the note data using extras
+startActivity(editIntent);

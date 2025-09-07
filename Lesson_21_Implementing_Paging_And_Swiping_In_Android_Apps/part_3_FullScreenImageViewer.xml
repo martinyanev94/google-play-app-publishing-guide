@@ -1,0 +1,24 @@
+<ImageView
+    android:id="@+id/fullScreenImageView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="centerCrop"/>
+imageView.setOnClickListener(v -> {
+    Intent intent = new Intent(getActivity(), FullScreenImageActivity.class);
+    intent.putExtra("imageUrl", imageUrl);
+    startActivity(intent);
+});
+public class FullScreenImageActivity extends AppCompatActivity {
+    private ImageView fullScreenImageView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_full_screen_image);
+
+        fullScreenImageView = findViewById(R.id.fullScreenImageView);
+        String imageUrl = getIntent().getStringExtra("imageUrl");
+
+        Glide.with(this).load(imageUrl).into(fullScreenImageView);
+    }
+}

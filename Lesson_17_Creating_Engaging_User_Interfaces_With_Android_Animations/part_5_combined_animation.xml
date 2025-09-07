@@ -1,0 +1,7 @@
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha android:fromAlpha="0.0" android:toAlpha="1.0" android:duration="300"/>
+    <translate android:fromXDelta="-100%" android:toXDelta="0%" android:duration="300"/>
+</set>
+Animation combinedAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.combined_animation);
+ImageView imageView = (ImageView) findViewById(R.id.imageView);
+imageView.startAnimation(combinedAnimation);

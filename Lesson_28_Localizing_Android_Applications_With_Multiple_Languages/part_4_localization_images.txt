@@ -1,0 +1,6 @@
+res/
+    drawable/
+    drawable-es/
+        localized_image.png
+    drawable-fr/
+        image_localisée.png

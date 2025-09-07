@@ -1,0 +1,16 @@
+<Switch
+    android:id="@+id/switch1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Toggle me"/>
+Switch toggleSwitch = findViewById(R.id.switch1);
+toggleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (isChecked) {
+            textView.setText("Switch is ON");
+        } else {
+            textView.setText("Switch is OFF");
+        }
+    }
+});

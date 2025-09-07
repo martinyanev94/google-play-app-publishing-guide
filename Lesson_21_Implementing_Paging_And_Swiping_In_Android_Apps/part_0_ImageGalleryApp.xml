@@ -1,0 +1,61 @@
+<androidx.viewpager.widget.ViewPager
+    android:id="@+id/viewPager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+public class ImagePagerAdapter extends FragmentPagerAdapter {
+    private List<String> imageUrls;
+
+    public ImagePagerAdapter(FragmentManager fm, List<String> imageUrls) {
+        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        this.imageUrls = imageUrls;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        return ImageFragment.newInstance(imageUrls.get(position));
+    }
+
+    @Override
+    public int getCount() {
+        return imageUrls.size();
+    }
+}
+public class ImageFragment extends Fragment {
+    private static final String ARG_IMAGE_URL = "image_url";
+
+    public static ImageFragment newInstance(String imageUrl) {
+        ImageFragment fragment = new ImageFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_IMAGE_URL, imageUrl);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_image, container, false);
+        ImageView imageView = view.findViewById(R.id.imageView);
+        String imageUrl = getArguments().getString(ARG_IMAGE_URL);
+
+        // Use a library like Glide or Picasso to load the image
+        Glide.with(this).load(imageUrl).into(imageView);
+        return view;
+    }
+}
+implementation 'com.github.bumptech.glide:glide:4.12.0'
+annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+public class MainActivity extends AppCompatActivity {
+    private ViewPager viewPager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        viewPager = findViewById(R.id.viewPager);
+        List<String> imageUrls = Arrays.asList("url1", "url2", "url3"); // Replace with actual image URLs
+        ImagePagerAdapter adapter = new ImagePagerAdapter(getSupportFragmentManager(), imageUrls);
+        viewPager.setAdapter(adapter);
+    }
+}

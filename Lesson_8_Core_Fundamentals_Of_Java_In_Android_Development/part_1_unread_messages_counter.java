@@ -1,0 +1,1 @@
+int unreadMessages = 0;

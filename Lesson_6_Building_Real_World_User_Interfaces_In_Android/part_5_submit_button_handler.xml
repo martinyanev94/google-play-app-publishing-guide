@@ -1,0 +1,18 @@
+<Button
+    android:id="@+id/buttonSubmit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Submit"/>
+Button submitButton = findViewById(R.id.buttonSubmit);
+submitButton.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        EditText name = findViewById(R.id.editTextName);
+        EditText email = findViewById(R.id.editTextEmail);
+        EditText password = findViewById(R.id.editTextPassword);
+        EditText confirmPassword = findViewById(R.id.editTextConfirmPassword);
+
+        String message = "Welcome " + name.getText().toString() + "! Your email is " + email.getText().toString();
+        Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG).show();
+    }
+});
